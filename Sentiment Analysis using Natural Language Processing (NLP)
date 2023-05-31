@@ -1,0 +1,20 @@
+import nltk
+from nltk.sentiment import SentimentIntensityAnalyzer
+
+# Initialize the sentiment analyzer
+sid = SentimentIntensityAnalyzer()
+
+# Function to perform sentiment analysis on a given text
+def analyze_sentiment(text):
+    sentiment_scores = sid.polarity_scores(text)
+    if sentiment_scores['compound'] >= 0.05:
+        return "Positive"
+    elif sentiment_scores['compound'] <= -0.05:
+        return "Negative"
+    else:
+        return "Neutral"
+
+# Main code
+text = "I love this movie! It's so amazing."
+sentiment = analyze_sentiment(text)
+print("Sentiment:", sentiment)
